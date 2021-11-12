@@ -1,0 +1,3 @@
+# Files advised to be ignored by Tango with Django
+db.sqlite3
+*.pyc
