@@ -3,3 +3,9 @@ Start VirtualEnv:
 
 Launch server:
 python manage.py runserver 0.0.0.0:5555
+python manage.py runserver 127.0.0.1:8000
+
+Superuser:
+Name: joelg
+Email: joel.gibson20@gmail.com
+Password: Password1!
