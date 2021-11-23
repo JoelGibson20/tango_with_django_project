@@ -3,7 +3,7 @@ from rango.models import Category, Page
 
 
 class PageAdmin(admin.ModelAdmin):
-    fields = ["title", "category", "url"]
+    fields = ["title", "category", "url", "views"]
 
 
 class CategoryAdmin(admin.ModelAdmin):
