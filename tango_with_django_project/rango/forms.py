@@ -7,6 +7,7 @@ class CategoryForm(forms.ModelForm):
     views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     likes = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
     slug = forms.CharField(widget=forms.HiddenInput(), required=False)
+
     # An inline class to provide additional information on the form.
 
     class Meta:
@@ -31,3 +32,19 @@ class PageForm(forms.ModelForm):
         exclude = ('category',)
         # or specify the fields to include (i.e. not include the category field)
         # #fields = ('title', 'url', 'views')
+
+    def clean(self):
+        #This doesn't appear to be working
+        cleaned_data = self.cleaned_data
+        url = cleaned_data.get('url')
+
+        # If url is not empty and doesn't start with 'http://',
+        # then prepend 'http://'
+        if url and not url.startswith('http://'):
+            # Can check to see if an entered value for a form field matches what you expected
+            url = 'http://' + url
+            # Can then make modifications to fix the problem
+            cleaned_data['url'] = url
+            # Reassign new value
+
+        return cleaned_data  # Must finish clean method by returning cleaned_data or value changes won't be applied
