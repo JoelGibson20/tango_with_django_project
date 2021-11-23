@@ -19,6 +19,8 @@
             {% for category in categories %}
                 <li>
                     <a href="/rango/category/{{ category.slug }}">{{ category.name }}</a>
+                    <!-- Might want to remove hardcoding of urls, info here:
+                    https://docs.djangoproject.com/en/2.0/intro/tutorial03/ -->
                 </li>
             {% endfor %}
         </ul>
