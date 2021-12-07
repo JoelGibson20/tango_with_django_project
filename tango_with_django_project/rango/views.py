@@ -135,3 +135,7 @@ def visitor_cookie_handler(request):
 
     # Update/set the visits cookie
     request.session['visits'] = visits
+
+
+def restricted(request):
+    return render(request, 'rango/restricted.html')
