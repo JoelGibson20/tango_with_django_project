@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 from rango import views
 from registration.backends.simple.views import RegistrationView
 from django.urls import reverse
-import debug_toolbar
+from django-debug-toolbar import debug_toolbar
 
 
 class MyRegistrationView(RegistrationView):
