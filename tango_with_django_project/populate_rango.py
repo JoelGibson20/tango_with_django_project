@@ -62,10 +62,8 @@ def populate():
         c = add_cat(cat, cat_data[1], cat_data[2])
         for p in cat_data[0].items():
             for q in p[1]:
-                print(q.items())
                 add_page(c, q["title"], q["url"], q["views"])
-            print("test:")
-            print(p)
+
 
     # Print out the categories we have added.
     for c in Category.objects.all():
