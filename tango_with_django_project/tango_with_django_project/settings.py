@@ -149,10 +149,10 @@ DEBUG = True  # Allows debug toolbar to be displayed
 
 
 def show_toolbar(request):  # Function to check whether Django Debug Toolbar should be displayed
-    return request.user.username == "joelg"  # Toolbar only shown if the user signed in is the admin account
+    return request.user.username == "joelg"  #Toolbar only shown if the user signed in is the admin account
 
 
 DEBUG_TOOLBAR_CONFIG = {  # Configuration settings for Django Debug Toolbar
-    'SHOW_TOOLBAR_CALLBACK': show_toolbar
+    'SHOW_TOOLBAR_CALLBACK': 'tango_with_django_project.settings.show_toolbar'
     # Specifies the function to call to check if the toolbar should be displayed
 }
