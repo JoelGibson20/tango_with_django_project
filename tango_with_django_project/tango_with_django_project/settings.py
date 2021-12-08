@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rango',
-    'registration'
+    'registration',
+    "debug_toolbar"
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware"
 ]
 
 ROOT_URLCONF = 'tango_with_django_project.urls'
@@ -136,3 +138,21 @@ LOGIN_REDIRECT_URL = '/rango/'
 # The page users are directed to if they are not logged in,
 # and are trying to access pages requiring authentication
 LOGIN_URL = '/accounts/login/'
+
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
+
+DEBUG = True  # Allows debug toolbar to be displayed
+
+
+def show_toolbar(request):  # Function to check whether Django Debug Toolbar should be displayed
+    return request.user.username == "joelg"  #Toolbar only shown if the user signed in is the admin account
+
+
+DEBUG_TOOLBAR_CONFIG = {  # Configuration settings for Django Debug Toolbar
+    'SHOW_TOOLBAR_CALLBACK': 'tango_with_django_project.settings.show_toolbar'
+    # Specifies the function to call to check if the toolbar should be displayed
+}
