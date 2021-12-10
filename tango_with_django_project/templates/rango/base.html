@@ -1,7 +1,8 @@
-<!DOCTYPE html>
-{% load staticfiles %}
-{% load rango_template_tags %}
+<!DOCTYPE html> <!-- This is the base HTML page for all other pages to inherit from and modify -->
+{% load staticfiles %} <!-- Specifies the template this HTML page inherits from -->
+{% load rango_template_tags %} <!-- Load template tags -->
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,7 +11,9 @@
     <meta name="generator" content="Jekyll v3.8.5">
     <link rel="icon" href="{% static 'images/favicon.ico' %}">
     <title>
-        Rango - {% block title_block %}How to Tango with Django!{% endblock %}
+        Rango - {% block title_block %}
+        How to Tango with Django!
+        {% endblock %}
     </title>
 
     <!-- Bootstrap core CSS -->

@@ -1,15 +1,15 @@
-{% extends 'rango/base.html' %}
-{% load staticfiles %}
+{% extends 'rango/base.html' %} <!-- Specifies the template this HTML page inherits from -->
+{% load staticfiles %} <!-- Loads static files so this page can use any content in the static directory -->
 
-{% block title_block %}
-Restricted Page
+{% block title_block %} <!-- Page title -->
+    Restricted Page
 {% endblock %}
 
 {% block body_block %}
-<div class="jumbotron p-4">
-    <div class="container">
-        <h1 class="jumbotron-heading">Restricted Page</h1>
+    <div class="jumbotron p-4"> <!-- Jumbotron containing a page heading -->
+        <div class="container">
+            <h1 class="jumbotron-heading">Restricted Page</h1>
+        </div>
     </div>
-</div>
-Since you're logged in, you can see this text!<br />
+    Since you're logged in, you can see this text!<br />
 {% endblock %}

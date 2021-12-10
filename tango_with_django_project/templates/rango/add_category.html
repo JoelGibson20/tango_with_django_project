@@ -1,33 +1,35 @@
-{% extends 'rango/base.html' %}
-{% load staticfiles %}
+{% extends 'rango/base.html' %} <!-- Specifies the template this HTML page inherits from -->
+{% load staticfiles %} <!-- Loads static files so this page can use any content in the static directory -->
 
-{% block title_block %}
-Add a Category
+{% block title_block %} <!-- Page title -->
+    Add a Category
 {% endblock %}
 
 {% block body_block %}
-<div class="jumbotron p-4">
+    <div class="jumbotron p-4"> <!-- Jumbotron containing a page heading -->
+        <div class="container">
+            <h1 class="jumbotron-heading">Add a Category</h1>
+        </div>
+    </div>
+
     <div class="container">
-        <h1 class="jumbotron-heading">Add a Category</h1>
+        <div class="row">
+            <form role="form" id="category_form" method="post" action="{% url 'add_category' %}">
+                <!-- Add category form -->
+                {% csrf_token %}
+                {% for hidden in form.hidden_fields %} <!-- Hidden form fields not displayed -->
+                {{ hidden }}
+                {% endfor %}
+                {% for field in form.visible_fields %} <!-- Display visible form fields -->
+                {{ field.errors }}
+                {{ field.help_text }}<br />
+                {{ field }}<br />
+                    <div class="p-2"></div>
+                {% endfor %}
+                <br />
+                <button class="btn btn-primary" type="submit" name="submit">Create Category</button>
+                <div class="p-5"></div>
+            </form>
+        </div>
     </div>
-</div>
-<div class="container">
-    <div class="row">
-        <form role="form" id="category_form" method="post" action="{% url 'add_category' %}">
-            {% csrf_token %}
-            {% for hidden in form.hidden_fields %}
-            {{ hidden }}
-            {% endfor %}
-            {% for field in form.visible_fields %}
-            {{ field.errors }}
-            {{ field.help_text }}<br />
-            {{ field }}<br />
-            <div class="p-2"></div>
-            {% endfor %}
-            <br />
-            <button class="btn btn-primary" type="submit" name="submit">Create Category</button>
-            <div class="p-5"></div>
-        </form>
-    </div>
-</div>
 {% endblock %}
