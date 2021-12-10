@@ -139,7 +139,7 @@ LOGIN_REDIRECT_URL = '/rango/'
 # and are trying to access pages requiring authentication
 LOGIN_URL = '/accounts/login/'
 
-INTERNAL_IPS = [
+INTERNAL_IPS = [  # Required to allow Django Debug Toolbar to work
     # ...
     "127.0.0.1",
     # ...

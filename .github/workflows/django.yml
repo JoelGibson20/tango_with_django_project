@@ -1,6 +1,7 @@
+# GitHub Actions template for Django with minor adjustments
 name: Django CI
 
-on:
+on: # This section would possibly require modification to account for multiple branches
   push:
     branches: [ new_branch ]
   pull_request:
@@ -13,7 +14,7 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        python-version: [3.7, 3.8, 3.9]
+        python-version: [3.7, 3.8, 3.9] # Attempts to build the application on 3 different Python versions
 
     steps:
     - uses: actions/checkout@v2
@@ -22,10 +23,10 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install Dependencies
-      run: |
+      run: | # Installs dependencies for the project from the requirements.txt file
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Run Tests
-      run: |
+      run: | # Run tests using coverage.py, and produce a test coverage report afterwards
         coverage run tango_with_django_project/manage.py test
         coverage report
