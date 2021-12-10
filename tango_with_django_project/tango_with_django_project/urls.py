@@ -25,17 +25,19 @@ from django.urls import reverse
 import debug_toolbar
 
 
-class MyRegistrationView(RegistrationView):
+class MyRegistrationView(RegistrationView):  # Redirects user back to index upon successful registration
     def get_success_url(self, user):
         return reverse('index')
 
 
 urlpatterns = [
                   path('', views.index, name='index'),
-                  path('rango/', include('rango.urls')),
-                  path('admin/', admin.site.urls),
+                  path('rango/', include('rango.urls')),  # Will check range/urls if a rango/ URL is used
+                  path('admin/', admin.site.urls),  # URL for the admin portal
                   path('accounts/register/', MyRegistrationView.as_view(), name='registration_register'),
+                  # URL for account registration
                   path('accounts/', include('registration.backends.simple.urls')),
-                  path('__debug__/', include(debug_toolbar.urls)),
+                  # Will check Django Registration redux if an accounts/ url is used
+                  path('__debug__/', include(debug_toolbar.urls)),  # Debug URL for the Django Debug Toolbar
 
-              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  # Allows loading of static files

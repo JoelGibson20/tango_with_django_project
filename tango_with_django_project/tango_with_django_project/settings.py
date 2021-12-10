@@ -25,7 +25,7 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = '_$60=q5u=2u65emweib8iwje8l*ma*!tt0aj@&6f*8+uo(m!x+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True  # Allows debug toolbar to be displayed
 
 ALLOWED_HOSTS = []
 
@@ -145,11 +145,9 @@ INTERNAL_IPS = [  # Required to allow Django Debug Toolbar to work
     # ...
 ]
 
-DEBUG = True  # Allows debug toolbar to be displayed
-
 
 def show_toolbar(request):  # Function to check whether Django Debug Toolbar should be displayed
-    return request.user.username == "joelg"  #Toolbar only shown if the user signed in is the admin account
+    return request.user.username == "joelg"  # Toolbar only shown if the user signed in is the admin account
 
 
 DEBUG_TOOLBAR_CONFIG = {  # Configuration settings for Django Debug Toolbar
